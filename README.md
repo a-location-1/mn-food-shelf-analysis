@@ -1,6 +1,3 @@
-# mn-food-shelf-analysis
-Analysis of food shelf spatial variation in MN
-
 # Minnesota Food Shelf Spatial Variation
 
 ## 1. Research Question
@@ -12,6 +9,8 @@ In hunger prevention work and social policy analysis more broadly, attention is 
 Food shelf usage has increased significantly in Minnesota since 2021; the total number of MN food shelf visits in 2025 - 9,026,843 - is the highest recorded.
 
 ![A plot showing total food shelf visits from 2019 to 2025 in Minnesota](images/hungerdatatotalvisits.png)
+
+<img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/hungerdatatotalvisits.png" width=50%>
 
 Source: [The Food Group, 2025 Minnesota Food Shelf Visits Report](https://www.thefoodgroupmn.org/wp-content/uploads/2026/03/Food-Shelf-Visits-2025-Report-FINAL-31326.pdf).
 
