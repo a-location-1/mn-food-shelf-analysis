@@ -6,7 +6,7 @@ What are you investigating, and why does it matter?
 
 In hunger prevention work and social policy analysis more broadly, attention is often directed to the differences between rural and urban service provision.
 
-Food shelf usage has increased significantly in Minnesota since 2021; the total number of MN food shelf visits in 2025 - 9,026,843 - is the highest recorded.
+Food shelf usage has increased significantly in Minnesota since 2021; the total number of MN food shelf visits in 2025 -- 9,026,843 visits -- is the highest recorded.
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/hungerdatatotalvisits.png" alt='A plot showing total food shelf visits from 2019 to 2025 in Minnesota' width=60%>
 
