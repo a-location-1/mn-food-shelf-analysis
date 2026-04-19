@@ -1,3 +1,8 @@
+# File structure ignores:
+data/
+docs/
+images/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
