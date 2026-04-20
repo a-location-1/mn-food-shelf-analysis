@@ -110,7 +110,7 @@ def main():
 
 
 def write_csv(records):
-    outfile = "food_shelves.csv"
+    outfile = "data/mn_food_shelf_list.csv"
     with open(outfile, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["name", "address"])
         writer.writeheader()
