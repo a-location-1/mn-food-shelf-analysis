@@ -101,7 +101,7 @@ Even more pertinent to this analysis: there's no reason to think that *food shel
 
 Finally, food shelves are only one way food help is delivered. A lack of food shelves might be balanced out by other services that better meet a particular county's needs; without a broader accounting of which types of service provision are available, this analysis is incomplete.[^2]
 
-NOTE ON FOOD SHELF SIZES: Food shelves are very different. [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey) write that 19% of their food shelf survey respondants serve 60 or fewer average households per month, and 28% of their respondants serve 476 or more households per month. Moreover, the increase in demand impacts larger food shelves *more* than smaller food shelves. In short, there are substantive differences between large operations and small operations, and this analysis treats each shelf as a singular entity with equal weight in the analysis. 
+NOTE ON FOOD SHELF SIZES: Food shelves are very different. [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey) found that 19% of their food shelf survey respondants serve 60 or fewer average households per month, and 28% of their respondants serve 476 or more households per month. Moreover, the increase in demand impacts larger food shelves *more* than smaller food shelves. In short, there are substantive differences between large operations and small operations, and this analysis treats each shelf as a singular entity with equal weight in the analysis. 
 
 ## 8. References
 
