@@ -43,16 +43,15 @@ The data used for the analysis comes from two sources.
 
 The U.S. Department of Commerce's [Bureau of Economic Analysis (BEA)](https://www.bea.gov/) provides county-level population and personal income summary data. I used the most recent data available, [calendar year 2024](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*5wit58*_ga*MjEwNjIyNzY4LjE3NzY2MTQ4Nzc.*_ga_J4698JNNFT*czE3NzY2MTQ4NzckbzEkZzEkdDE3NzY2MTQ4ODkkajQ4JGwwJGgw#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCIyMCJdLFsiTWFqb3JfQXJlYSIsIjQiXSxbIlN0YXRlIixbIjI3MDAwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyItMSJdXSxbIlVuaXRfb2ZfbWVhc3VyZSIsIkxldmVscyJdLFsiWWVhciIsWyIyMDI0Il1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19). [(The data are also accessible via FRED \[Federal Reserve Economic Data\].)](https://fred.stlouisfed.org/release/tables?eid=267451&rid=175) The data were last updated 5 Feb 2026. The population estimates are from the United States Census Bureau's midyear population estimates, and so vary slightly from [the Census' finalized 2024 and 2025 estimates](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html#v2025) (for example, the BEA population estimate for Aitkin County is 16,335; the Census estimate is 16,283 for 2024 and 16,252 for 2025).
 
-#### MN County Food Shelf Data
+#### MN County Food Shelf Data (`food_shelves_scrapedgeocoded_2026.pkl`)
 
-Unlike the population and income data, the food shelf data isn't clearly labelled by time. Comparing different sources that have copied the data indicates the changes over time:
+Several sources provide lists of food shelves in Minnesota, but the lists are inconsistent and not labelled by time. Comparing these sources indicates changes over time:
 - The authors of the University of Minnesota's Health Foods, Healthy Lives Institute (HFHL) [Food Security Dashboard](https://hfhl.umn.edu/fooddashboard) state they compiled their list of food shelves from the Minnesota Department of Education's November 2021 Community Food Resource list ([Wayback Machine link](https://web.archive.org/web/20211111205019/https://education.mn.gov/Maps/CompSvcs/)). Their list has **391 food shelves**.
-- The current Minnesota Early Childhood Longitudinal Data System ([ECLDS](https://eclds.mn.gov/))'s [MN Family Resource Map](https://pub.education.mn.gov/mnfr/) lists **526 food shelves**, but there's no indication of when the list was most recently updated. The Resource Map authors state they compiled their list of food shelves from Hunger Solutions, which partnered with The Food Group in March 2024. I estimate this list is from 2025.
-- The Food Group's [Find Help Map](https://www.hungersolutions.org/find-help/) lists 554 food shelves as of 19 Apr 2026. The data are collected by The Food Group in partnership with the Minnesota Department of Children, Youth, and Family (DCYF). The 2025 report doesn't list the total number of food shelves, but the [2024 report](https://www.thefoodgroupmn.org/wp-content/uploads/2026/03/Food-Shelf-Visits-2024-Report_31126.pdf) states MN has "**487 food shelves**, mobile, and tribal programs that participate in TEFAP".
+- The Food Group's [2024 Food Shelf Visits report](https://www.thefoodgroupmn.org/wp-content/uploads/2026/03/Food-Shelf-Visits-2024-Report_31126.pdf) states MN has "**487 food shelves**, mobile, and tribal programs that participate in TEFAP \[The Emergency Food Assistance Program\]". A list is not provided. 
+- The Minnesota Early Childhood Longitudinal Data System ([ECLDS](https://eclds.mn.gov/))'s [MN Family Resource Map](https://pub.education.mn.gov/mnfr/) currently lists **482 food shelves** (and 44 food distribution services), but there's no indication of when the list was most recently updated. The Resource Map authors state they compiled their list of food shelves from Hunger Solutions, which partnered with The Food Group in March 2024. I estimate this list is from 2024 or 2025.
+- The Food Group's [Find Help Map](https://www.hungersolutions.org/find-help/) lists **552 food shelves** as of early May 2026 (down from 554 in mid-April 2026). The data are collected by The Food Group in partnership with the Minnesota Department of Children, Youth, and Family (DCYF).
 
-In the interest of using the most complete list available, I ran a python script, `scrape_food_shelf_list.py`, to collect the name and address of every listed food shelf.
-
-My plan is to use [the Census Geocoder](https://geocoding.geo.census.gov/geocoder/) to map each address to the correct Minnesota county.
+Additional comparison between these sources 
 
 ...
 
@@ -102,6 +101,8 @@ Even more pertinent to this analysis: there's no reason to think that *food shel
 Finally, food shelves are only one way food help is delivered. A lack of food shelves might be balanced out by other services that better meet a particular county's needs; without a broader accounting of which types of service provision are available, this analysis is incomplete.[^2]
 
 NOTE ON FOOD SHELF SIZES: Food shelves are very different. [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey) found that 19% of their food shelf survey respondants serve 60 or fewer average households per month, and 28% of their respondants serve 476 or more households per month. Moreover, the increase in demand impacts larger food shelves *more* than smaller food shelves. In short, there are substantive differences between large operations and small operations, and this analysis treats each shelf as a singular entity with equal weight in the analysis. 
+
+NOTE ON ARBIRARY BOUNDARIES: State boundaries are arbitrary when it comes to actual hunger prevention. This is most apparent for areas with services directly across the border, such as the Fargo-Moorhead metropolitan area and the Twin Ports (Duluth, MN and Superior, WI). On the other hand, Minnesota state boundaries are relevant because Minnesota is a self-contained administrative domain - MN local government can only make choices for MN. But the point still stands (e.x. an administrator siting a new food shelf would want to deprioritize a MN community already receiving survice from a nearby provider across state lines).
 
 ## 8. References
 
