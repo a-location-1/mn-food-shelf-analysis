@@ -49,9 +49,11 @@ Several sources provide lists of food shelves in Minnesota, but the lists are in
 - The authors of the University of Minnesota's Health Foods, Healthy Lives Institute (HFHL) [Food Security Dashboard](https://hfhl.umn.edu/fooddashboard) state they compiled their list of food shelves from the Minnesota Department of Education's November 2021 Community Food Resource list ([Wayback Machine link](https://web.archive.org/web/20211111205019/https://education.mn.gov/Maps/CompSvcs/)). Their list has **391 food shelves**.
 - The Food Group's [2024 Food Shelf Visits report](https://www.thefoodgroupmn.org/wp-content/uploads/2026/03/Food-Shelf-Visits-2024-Report_31126.pdf) states MN has "**487 food shelves**, mobile, and tribal programs that participate in TEFAP \[The Emergency Food Assistance Program\]". A list is not provided. 
 - The Minnesota Early Childhood Longitudinal Data System ([ECLDS](https://eclds.mn.gov/))'s [MN Family Resource Map](https://pub.education.mn.gov/mnfr/) currently lists **482 food shelves** (and 44 food distribution services), but there's no indication of when the list was most recently updated. The Resource Map authors state they compiled their list of food shelves from Hunger Solutions, which partnered with The Food Group in March 2024. I estimate this list is from 2024 or 2025.
-- The Food Group's [Find Help Map](https://www.hungersolutions.org/find-help/) lists **552 food shelves** as of early May 2026 (down from 554 in mid-April 2026). The data are collected by The Food Group in partnership with the Minnesota Department of Children, Youth, and Family (DCYF).
+- The Food Group's [Find Help Map](https://www.hungersolutions.org/find-help/) lists **552 food shelves** as of early May 2026, down from 554 in mid-April 2026 (however this does include 14 non-Minnesota food shelves). The data are collected by The Food Group in partnership with the Minnesota Department of Children, Youth, and Family (DCYF).
 
-Additional comparison between these sources 
+Additional comparison between these sources is available in `food_shelf_reconciliation.ipynb`.
+
+The project uses a final list of **537 Minnesota food shelves**, scraped 04/30/26.
 
 ...
 
