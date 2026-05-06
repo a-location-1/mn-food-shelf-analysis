@@ -1,6 +1,8 @@
 # Minnesota Food Shelf Spatial Variation
 
-<!-- **Reminder:** Your README should be clear enough that someone unfamiliar with your work could understand what you studied, how you analyzed it, and what you found. -->
+<!-- **Reminder:** Your README should be clear enough that someone unfamiliar with your work could understand what you studied, how you analyzed it, and what you found. 
+
+Links to the jupyter notebooks are added where appropriate. -->
 
 ## 1. Research Question
 
