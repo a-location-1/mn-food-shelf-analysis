@@ -23,7 +23,7 @@ In the context of this increase in demand, are urban and rural services scaling 
 
 <!-- State your null and alternative hypotheses clearly and succinctly. -->
 
-Null Hypothesis: A county's "metropolitanism" (its inclusion or exclusion from the Minneapolis-Saint Paul metropolitan area) has no effect on its number of food shelves per capita.
+Null Hypothesis: A county's "metropolitanism" (its inclusion or exclusion from the Minneapolis-Saint Paul metropolitan area) has no effect on its number of food shelf locations per 10,000 residents.
 
 Alternative Hypothesis: Non-metropolitan MN counties have fewer food shelves per capita than metropolitan counties.
 
