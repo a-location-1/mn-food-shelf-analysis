@@ -91,7 +91,7 @@ We analyze the data in Python, using the `pandas` library to structure the data 
 
 To test the null hypothesis, we observe the average value of the count of food shelf locations per 10k residents for Non-Metro counties minus the average value of the count of food shelf locations per 10k residents for Metro counties. The Non-Metro county average is 1.2 greater than the Metro county average.
 
-We then perform a permutation test - shuffling the Metro status column many times - to verify our 
+We then perform a permutation test - shuffling the Metro status column many (20,000) times - to verify our 
 
 ## 5. Results
 
@@ -105,6 +105,10 @@ The
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/locationper10kbarchart.png" alt='A plot showing Non-Metro counties have the greatest proportion of total food shelf locations per 10k residents' width=90%>
 
+The permutation test:
+
+<img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/permutationforlocationsper10k.png" alt='alt text here' width=60%>
+
 
 
 
@@ -115,6 +119,9 @@ The
 * How many resamples you used
 * What the bootstrap or randomization distributions looked like
 * How you interpret the interval estimates -->
+
+<img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/meanopenhours.png" alt='alt text here' width=90%>
+
 
 ## 7. Limitations
 
