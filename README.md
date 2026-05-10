@@ -26,7 +26,9 @@ Several factors influence availability:
 - Availability of desired foods[^2]
 - Environment (welcoming staff, culturally relevant foods, and more)
 
-This analysis focuses on number of locations, using a list of Minnesota food shelves to assess differences between Metropolitan (a location in a county in MN's Metropolitan Statistical Area) and Non-Metropolitan locations.
+This analysis focuses on two availability factors:
+- Number of locations. We use a census of Minnesota food shelf locations to assess differences between Metropolitan (a location in a county in MN's Metropolitan Statistical Area) and Non-Metropolitan locations.
+- Open hours. We use a sample of location hours to investigate differences in open hours from location to location.
 
 ## 2. Hypothesis
 
@@ -35,6 +37,8 @@ This analysis focuses on number of locations, using a list of Minnesota food she
 Null Hypothesis: A county's Metropolitan status has no effect on its number of food shelf locations per 10,000 residents.
 
 Alternative Hypothesis: Non-Metro counties have fewer food shelves per 10,000 residents than Metro counties.
+
+A separate analysis tests the null hypothesis that whether a food shelf is located in a Metro or Non-Metro county has no effect on its open hours. Here, our alternative hypothesis is that Metro food shelf locations will have more open hours than Non-Metro locations, on average. 
 
 
 ## 3. Data Description
@@ -97,6 +101,13 @@ We then perform a permutation test - shuffling the Metro status column many time
 * Observed test statistic and p-value (if applicable)
 * Bootstrap confidence intervals for relevant metrics -->
 
+The 
+
+<img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/locationper10kbarchart.png" alt='A plot showing Non-Metro counties have the greatest proportion of total food shelf locations per 10k residents' width=90%>
+
+
+
+
 ## 6. Uncertainty Estimation
 
 <!-- Discuss your resampling results:
@@ -131,7 +142,7 @@ NOTE ON ARBIRARY BOUNDARIES: State boundaries are arbitrary when it comes to act
 
 [^1]: Citing the USDA report "Household Food Security in the United States in 2016," the Food Research & Action Center (FRAC) reports that 15% of rural areas faced food insecurity in 2016, compared to 11.8% of metropolitan areas ([Rural Hunger in America: Get the Facts](https://frac.org/wp-content/uploads/rural-hunger-in-america-get-the-facts.pdf)).
 
-[^2]: Some data about food availability by type is [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey). For example, in 2025 shoppers reported that eggs were available only 37% of the time.
+[^2]: Some data about food availability by type are available in [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey). For example, in 2025 shoppers reported that eggs were available only 37% of the time.
 
 [^3]: With that said, some reports indicate food shelves are a significant piece of food insecurity prevention: [Second Harvest Heartland's 2025 "The State of Food Security in Minnesota"](https://www.wilder.org/wp-content/uploads/2025/08/SecondHarvestHeartland_Infographic_3-25.pdf) collaborated with Wilder Research for a survey that found that "a higher share of households (11% overall) reported accessing free food (such as from food pantries, food shelves, food banks, or grocery giveaways) than any other type of food aid, including SNAP (7% overall).
 
