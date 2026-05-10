@@ -52,27 +52,25 @@ The data used for the analysis comes from two sources.
 
 #### MN County Population Data (`bea_mn_2024.csv`)
 
-The U.S. Department of Commerce's [Bureau of Economic Analysis (BEA)](https://www.bea.gov/) provides county-level population and personal income summary data. I used the most recent data available, [calendar year 2024](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*5wit58*_ga*MjEwNjIyNzY4LjE3NzY2MTQ4Nzc.*_ga_J4698JNNFT*czE3NzY2MTQ4NzckbzEkZzEkdDE3NzY2MTQ4ODkkajQ4JGwwJGgw#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCIyMCJdLFsiTWFqb3JfQXJlYSIsIjQiXSxbIlN0YXRlIixbIjI3MDAwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyItMSJdXSxbIlVuaXRfb2ZfbWVhc3VyZSIsIkxldmVscyJdLFsiWWVhciIsWyIyMDI0Il1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19). [(The data are also accessible via FRED \[Federal Reserve Economic Data\].)](https://fred.stlouisfed.org/release/tables?eid=267451&rid=175) The data were last updated 5 Feb 2026. The population estimates are from the United States Census Bureau's midyear population estimates, and so vary slightly from [the Census' finalized 2024 and 2025 estimates](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html#v2025) (for example, the BEA population estimate for Aitkin County is 16,335; the Census estimate is 16,283 for 2024 and 16,252 for 2025).
+The U.S. Department of Commerce's [Bureau of Economic Analysis (BEA)](https://www.bea.gov/) provides county-level population and personal income summary data. I use the most recent data available, [calendar year 2024](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*5wit58*_ga*MjEwNjIyNzY4LjE3NzY2MTQ4Nzc.*_ga_J4698JNNFT*czE3NzY2MTQ4NzckbzEkZzEkdDE3NzY2MTQ4ODkkajQ4JGwwJGgw#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCIyMCJdLFsiTWFqb3JfQXJlYSIsIjQiXSxbIlN0YXRlIixbIjI3MDAwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyItMSJdXSxbIlVuaXRfb2ZfbWVhc3VyZSIsIkxldmVscyJdLFsiWWVhciIsWyIyMDI0Il1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19). [(The data are also accessible via FRED \[Federal Reserve Economic Data\].)](https://fred.stlouisfed.org/release/tables?eid=267451&rid=175) The data were last updated 5 Feb 2026. The population estimates are from the United States Census Bureau's midyear population estimates, and so vary slightly from [the Census' finalized 2024 and 2025 estimates](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html#v2025) (for example, the BEA population estimate for Aitkin County is 16,335; the Census estimate is 16,283 for 2024 and 16,252 for 2025).
 
 There are 87 rows, one for each county in Minnesota.
 
 #### MN County Food Shelf Data (`food_shelves_scrapedgeocoded_2026.pkl`)
 
-Several sources provide lists of food shelves in Minnesota, but the lists are inconsistent and not labelled by time. Comparing these sources indicates changes over time:
+Several sources provide lists of food shelves in Minnesota, but the lists are inconsistent and not clearly labelled by time. Comparing these sources indicates changes over time:
 - The authors of the University of Minnesota's Health Foods, Healthy Lives Institute (HFHL) [Food Security Dashboard](https://hfhl.umn.edu/fooddashboard) state they compiled their list of food shelves from the Minnesota Department of Education's November 2021 Community Food Resource list ([Wayback Machine link](https://web.archive.org/web/20211111205019/https://education.mn.gov/Maps/CompSvcs/)). Their list has **391 food shelves**.
 - The Food Group's [2024 Food Shelf Visits report](https://www.thefoodgroupmn.org/wp-content/uploads/2026/03/Food-Shelf-Visits-2024-Report_31126.pdf) states MN has "**487 food shelves**, mobile, and tribal programs that participate in TEFAP \[The Emergency Food Assistance Program\]". A list is not provided. 
 - The Minnesota Early Childhood Longitudinal Data System ([ECLDS](https://eclds.mn.gov/))'s [MN Family Resource Map](https://pub.education.mn.gov/mnfr/) currently lists **482 food shelves** (and 44 food distribution services), but there's no indication of when the list was most recently updated. The Resource Map authors state they compiled their list of food shelves from Hunger Solutions, which partnered with The Food Group in March 2024. I estimate this list is from 2024 or 2025.
 - The Food Group's [Find Help Map](https://www.hungersolutions.org/find-help/) lists **552 food shelves** as of late April 2026, down from 554 in mid-April. The list does include 16 food shelves outside Minnesota. The data are collected by the Food Group in partnership with the Minnesota Department of Children, Youth, and Family (DCYF).
 
-The project uses a list scrapped from the Find Help Map on 04/30/2026. For additional comparison between sources, see [food_shelf_reconciliation.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_list_reconciliation.ipynb). 14 of the 16 non-Minnesota food shelves are included in the analysis due to their proximity to Minnesota. see [food_shelf_eda.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_eda.ipynb) for additional details about the cleaning process.
+The project uses a list scrapped from the Find Help Map on 04/30/2026. For additional comparison between sources, see [food_shelf_reconciliation.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_list_reconciliation.ipynb). 14 of the 16 non-Minnesota food shelves are included in the analysis due to their proximity to Minnesota. See [food_shelf_eda.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_eda.ipynb) for additional details about the cleaning process.
 
 There are 549 rows, one for each food shelf location.
 
 ### Data Overview
 
-...
-
-Its a census of food shelves, but its a sample of relief programs. More broadly, we foolishly hope to use the food shelf number as a measure of hunger help.
+The analysis uses this census of food shelf locations, summarized by count per county. The cleaned dataset has 87 rows, with county name, Metro status, count of food shelf locations, and count of food shelf locations per 10,000 residents. 
 
 ## 4. Methods
 
@@ -82,6 +80,14 @@ Its a census of food shelves, but its a sample of relief programs. More broadly,
 * How you simulated or resampled under the null hypothesis
 * The metric(s) for which you created bootstrap confidence intervals
 * Why the CLT does not apply to at least one metric -->
+
+We analyze the data in Python, using the `pandas` library to structure the data and the `matplotlib` and `seaborn` libraries for visualization.
+- [food_shelf_eda.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_eda.ipynb)
+- [food_shelf_analysis.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_analysis.ipynb)
+
+To test the null hypothesis, we observe the average value of the count of food shelf locations per 10k residents for Non-Metro counties minus the average value of the count of food shelf locations per 10k residents for Metro counties. The Non-Metro county average is 1.2 greater than the Metro county average.
+
+We then perform a permutation test - shuffling the Metro status column many times - to verify our 
 
 ## 5. Results
 
