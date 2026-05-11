@@ -115,7 +115,7 @@ This plot of the permutation test gives us a view of the world of the null hypot
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/permutationforlocationsper10k.png" alt='alt text here' width=60%>
 
-Our observed value of 1.2 is therefore extremely unlikely - about 1% ($p \approx 0.01$) - if the null hypothesis is true. Therefore, we reject our null hpothesis. 
+Our observed value of 1.2 is therefore extremely unlikely - about 1% ($p \approx 0.01$) - if the null hypothesis is true. We use a conventional threshold of 5% ($\alpha = 0.05$) to assess significance. 1% is less than 5%, and so we reject our null hpothesis. 
 
 However, the result does not support our original alternative hypothesis. Instead, it suggests support for a new hypothesis: that it is Non-Metro counties with the higher proportion of food shelf locations to 10k residents.
 
@@ -127,10 +127,15 @@ However, the result does not support our original alternative hypothesis. Instea
 * What the bootstrap or randomization distributions looked like
 * How you interpret the interval estimates -->
 
-For the separate hours analysis, we use a 30 location sample to estimate the number of open hours per month for an average Minnesota food shelf. We use bootstrapping - sampling from our sample with replacement 1,000 times - 
+For the separate hours analysis, we use a 30 location sample to estimate the number of open hours per month for an average Minnesota food shelf. Our sample's mean hours per month is about 40. Using bootstrapping - sampling from our sample with replacement 1,000 times - we determine that we are 95% confident the average number of hours is between 25 to 50 hours per month. 
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/meanopenhours.png" alt='alt text here' width=80%>
 
+However, the shape of our sample's distribution suggests that food shelves might fall into two loose groupings: those open a small number of hours per month, say 10, and those open a larger number of hours per month, say 120 (approximately 30 hours per week). Because these groupings are so far from each other, there's a high amount of variation in the data. We can measure this variation in our sample using the standard deviation: about 50 hours. Using boostrapping, our 95% confidence interval for the standard deviation is between 36 hours and 58 hours.
+
+The standard deviation (50 hours) being greater than the mean (40 hours) tells us we should be uncertain about our mean results due to the high about of variation in the data. The large confidence interval around the standard deviation tells us we should be uncertain about our uncertainty. In short, our data are so varied that additional analytical tools are necessary to accurately infer qualities in the population.
+
+Our uncertainty estimation is limited by our sample size. On the positive side, 30 samples is more than 5% of the total population. However, due to the extreme skew in the data distribution, this may be insufficient. For example, we know that in the population 25% of locations are in Hennepin and Ramsey, however in the sample only 16.66% of locations are.
 
 ## 7. Limitations
 
