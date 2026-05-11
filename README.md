@@ -157,6 +157,10 @@ The analysis takes the administrative unit of "the county" as its unit of analys
 
 One advantage of keeping the analysis within Minnesota state boundaries is that our data may better reflect the data with which local governments and Minnesota-based nonprofits make decisions.
 
+### C. Limited statistical methods
+
+Additional statistical methods may be necessary to make inferences about the right-skewed, bimodal distribution of food shelf hours per month. 
+
 ## 8. References
 
 <!-- List all datasets, tools, libraries, or papers you cited. -->
@@ -168,5 +172,3 @@ One advantage of keeping the analysis within Minnesota state boundaries is that 
 [^3]: This analysis only considers food shelves, which is a limitation. For example, a lack of food shelves in a particular area might be balanced out by other services that better meet a particular community's needs. With that said, food shelves are a significant piece of food insecurity prevention: [Second Harvest Heartland's 2025 "The State of Food Security in Minnesota"](https://www.wilder.org/wp-content/uploads/2025/08/SecondHarvestHeartland_Infographic_3-25.pdf) collaborated with Wilder Research for a survey that found that "a higher share of households (11% overall) reported accessing free food (such as from food pantries, food shelves, food banks, or grocery giveaways) than any other type of food aid, including SNAP (7% overall)."
 
 [^4]: The data for TEFAP case distribution comes from the Minnesota Department of Children, Youth, and Families (DCYF). A short analysis is available in [tefap_context.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/tefap_context.ipynb). [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey) also highlights the huge difference in food shelf size: 19% of the food shelf survey respondants serve 60 or fewer average households per month. 28% of the respondants serve 476 or more households per month.
-
----
