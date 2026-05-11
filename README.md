@@ -16,7 +16,7 @@ Food shelf usage has increased significantly in Minnesota since 2021; the total 
 
 Source: [The Food Group, 2025 Minnesota Food Shelf Visits Report](https://www.thefoodgroupmn.org/wp-content/uploads/2026/03/Food-Shelf-Visits-2025-Report-FINAL-31326.pdf).
 
-In the context of this increase in demand, are urban and rural food help services equally available?
+In the context of this increase in demand, are urban and rural food shelves equally available?
 
 Several factors influence availability:
 - Number of locations
@@ -25,10 +25,11 @@ Several factors influence availability:
 - Transportation options
 - Availability of desired foods[^2]
 - Environment (welcoming staff, culturally relevant foods, and more)
+- Availability of other food help services
 
 This analysis focuses on two availability factors:
-- Number of locations. We use a census of Minnesota food shelf locations to assess differences between Metropolitan (a location in a county in MN's Metropolitan Statistical Area) and Non-Metropolitan locations.
-- Open hours. We use a sample of location hours to investigate differences in open hours from location to location.
+- Number of locations. We use a census of Minnesota food shelf locations to assess differences between Metropolitan and Non-Metropolitan locations. A location is Metropolitan if it is in a county that is in Minnesota's Metropolitan Statistical Area.
+- Open hours. We use a sample of food shelf location hours to investigate differences from location to location.
 
 ## 2. Hypothesis
 
@@ -36,10 +37,9 @@ This analysis focuses on two availability factors:
 
 Null Hypothesis: A county's Metropolitan status has no effect on its number of food shelf locations per 10,000 residents.
 
-Alternative Hypothesis: Non-Metro counties have fewer food shelves per 10,000 residents than Metro counties.
+Alternative Hypothesis: Non-Metro counties have fewer food shelf locations per 10,000 residents than Metro counties.
 
-A separate analysis tests the null hypothesis that whether a food shelf is located in a Metro or Non-Metro county has no effect on its open hours. Here, our alternative hypothesis is that Metro food shelf locations will have more open hours than Non-Metro locations, on average. 
-
+A separate analysis tests the null hypothesis that a location's Metro status has no effect on its open hours per month. Here, our alternative hypothesis is that Metro food shelf locations will have more open hours than Non-Metro locations, on average.
 
 ## 3. Data Description
 
@@ -56,7 +56,7 @@ The data used for the analysis comes from two sources.
 
 #### MN County Population Data (`bea_mn_2024.csv`)
 
-The U.S. Department of Commerce's [Bureau of Economic Analysis (BEA)](https://www.bea.gov/) provides county-level population and personal income summary data. I use the most recent data available, [calendar year 2024](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*5wit58*_ga*MjEwNjIyNzY4LjE3NzY2MTQ4Nzc.*_ga_J4698JNNFT*czE3NzY2MTQ4NzckbzEkZzEkdDE3NzY2MTQ4ODkkajQ4JGwwJGgw#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCIyMCJdLFsiTWFqb3JfQXJlYSIsIjQiXSxbIlN0YXRlIixbIjI3MDAwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyItMSJdXSxbIlVuaXRfb2ZfbWVhc3VyZSIsIkxldmVscyJdLFsiWWVhciIsWyIyMDI0Il1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19). [(The data are also accessible via FRED \[Federal Reserve Economic Data\].)](https://fred.stlouisfed.org/release/tables?eid=267451&rid=175) The data were last updated 5 Feb 2026. The population estimates are from the United States Census Bureau's midyear population estimates, and so vary slightly from [the Census' finalized 2024 and 2025 estimates](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html#v2025) (for example, the BEA population estimate for Aitkin County is 16,335; the Census estimate is 16,283 for 2024 and 16,252 for 2025).
+The U.S. Department of Commerce's [Bureau of Economic Analysis (BEA)](https://www.bea.gov/) provides county-level population and personal income summary data. We use the most recent data available, [calendar year 2024](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*5wit58*_ga*MjEwNjIyNzY4LjE3NzY2MTQ4Nzc.*_ga_J4698JNNFT*czE3NzY2MTQ4NzckbzEkZzEkdDE3NzY2MTQ4ODkkajQ4JGwwJGgw#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCIyMCJdLFsiTWFqb3JfQXJlYSIsIjQiXSxbIlN0YXRlIixbIjI3MDAwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyItMSJdXSxbIlVuaXRfb2ZfbWVhc3VyZSIsIkxldmVscyJdLFsiWWVhciIsWyIyMDI0Il1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19). [(The data are also accessible via FRED \[Federal Reserve Economic Data\].)](https://fred.stlouisfed.org/release/tables?eid=267451&rid=175) The data were last updated 5 Feb 2026. The population estimates are from the United States Census Bureau's midyear population estimates, and so vary slightly from [the Census' finalized 2024 and 2025 estimates](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html#v2025) (for example, the BEA population estimate for Aitkin County is 16,335; the Census estimate is 16,283 for 2024 and 16,252 for 2025).
 
 There are 87 rows, one for each county in Minnesota.
 
@@ -68,13 +68,13 @@ Several sources provide lists of food shelves in Minnesota, but the lists are in
 - The Minnesota Early Childhood Longitudinal Data System ([ECLDS](https://eclds.mn.gov/))'s [MN Family Resource Map](https://pub.education.mn.gov/mnfr/) currently lists **482 food shelves** (and 44 food distribution services), but there's no indication of when the list was most recently updated. The Resource Map authors state they compiled their list of food shelves from Hunger Solutions, which partnered with The Food Group in March 2024. I estimate this list is from 2024 or 2025.
 - The Food Group's [Find Help Map](https://www.hungersolutions.org/find-help/) lists **552 food shelves** as of late April 2026, down from 554 in mid-April. The list does include 16 food shelves outside Minnesota. The data are collected by the Food Group in partnership with the Minnesota Department of Children, Youth, and Family (DCYF).
 
-The project uses a list scrapped from the Find Help Map on 04/30/2026. For additional comparison between sources, see [food_shelf_reconciliation.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_list_reconciliation.ipynb). 14 of the 16 non-Minnesota food shelves are included in the analysis due to their proximity to Minnesota. See [food_shelf_eda.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_eda.ipynb) for additional details about the cleaning process.
+The project uses a list web scraped from the Find Help Map on 04/30/2026. For additional comparison between sources, see [food_shelf_reconciliation.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_list_reconciliation.ipynb). 14 of the 16 non-Minnesota food shelves are included in the analysis due to their proximity to Minnesota. See [food_shelf_eda.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_eda.ipynb) for additional details about the cleaning process.
 
 There are 549 rows, one for each food shelf location.
 
 ### Data Overview
 
-The analysis uses this census of food shelf locations, summarized by count per county. The cleaned dataset has 87 rows, with county name, Metro status, count of food shelf locations, and count of food shelf locations per 10,000 residents. 
+The analysis uses a census of Minnesota food shelf locations, summarized by count per county. The cleaned dataset has 87 rows, with county name, Metro status, count of food shelf locations, and a calculated proportion of food shelf locations per 10,000 residents.
 
 ## 4. Methods
 
@@ -85,13 +85,15 @@ The analysis uses this census of food shelf locations, summarized by count per c
 * The metric(s) for which you created bootstrap confidence intervals
 * Why the CLT does not apply to at least one metric -->
 
-We analyze the data in Python, using the `pandas` library to structure the data and the `matplotlib` and `seaborn` libraries for visualization.
-- [food_shelf_eda.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_eda.ipynb)
-- [food_shelf_analysis.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_analysis.ipynb)
+We analyze the data in Python, using the `pandas` and `numpy` libraries to structure the data and the `matplotlib` and `seaborn` libraries for visualization.
+- Exploratory Data Analysis: [food_shelf_eda.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_eda.ipynb)
+- Statistical Analysis: [food_shelf_analysis.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/food_shelf_analysis.ipynb)
 
-To test the null hypothesis, we observe the average value of the count of food shelf locations per 10k residents for Non-Metro counties minus the average value of the count of food shelf locations per 10k residents for Metro counties. The Non-Metro county average is 1.2 greater than the Metro county average.
+To test the null hypothesis, we observe the average value of the proportion of food shelf locations per 10k residents for Non-Metro counties minus the average value of the proportion of food shelf locations per 10k residents for Metro counties.
 
-We then perform a permutation test - shuffling the Metro status column many (20,000) times - to verify our 
+We then perform a permutation test - a computational analysis technique in which we shuffle the Metro status column many (in this case, 20,000) times - to verify that the difference we observe is statistically significant. This test lets us reject our null hypothesis. 
+
+For the separate hours analysis, we calculate 95% confidence intervals using bootstrapping for (1) the average hours of the sample locations, and (2) a measure of the variation between the locations' hours, standard deviation.
 
 ## 5. Results
 
@@ -101,9 +103,14 @@ We then perform a permutation test - shuffling the Metro status column many (20,
 * Observed test statistic and p-value (if applicable)
 * Bootstrap confidence intervals for relevant metrics -->
 
-The 
+Minnesota's Metro counties are generally the state's most populous, and we expect them to have the greatest number of food shelf locations. Our census of food shelf locations confirms this is accurate - for example, just the counties of Hennepin and Ramsey (which hold the Twin Cities) have 137 food shelf locations, which is 25% of the total. 
+
+However, when we control for population by taking a proportion of the number of food shelf locations per 10,000 residents, a different picture emerges:
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/locationper10kbarchart.png" alt='A plot showing Non-Metro counties have the greatest proportion of total food shelf locations per 10k residents' width=90%>
+
+
+
 
 The permutation test:
 
@@ -120,7 +127,7 @@ The permutation test:
 * What the bootstrap or randomization distributions looked like
 * How you interpret the interval estimates -->
 
-<img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/meanopenhours.png" alt='alt text here' width=90%>
+<img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/meanopenhours.png" alt='alt text here' width=80%>
 
 
 ## 7. Limitations
