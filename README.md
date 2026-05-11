@@ -91,9 +91,9 @@ We analyze the data in Python, using the `pandas` and `numpy` libraries to struc
 
 To test the null hypothesis, we observe the average value of the proportion of food shelf locations per 10k residents for Non-Metro counties minus the average value of the proportion of food shelf locations per 10k residents for Metro counties.
 
-We then perform a permutation test - a computational analysis technique in which we shuffle the Metro status column many (in this case, 20,000) times - to verify that the difference we observe is statistically significant. This test lets us reject our null hypothesis. 
+We then perform a permutation test - a computational analysis technique in which we shuffle the Metro status column many times - to verify that the difference we observe is statistically significant. This test lets us reject our null hypothesis. 
 
-For the separate hours analysis, we calculate 95% confidence intervals using bootstrapping for (1) the average hours of the sample locations, and (2) a measure of the variation between the locations' hours, standard deviation.
+For the separate hours analysis, we calculate 95% confidence intervals using bootstrapping for (1) the average hours of the sample locations, and (2) a measure of the variation between the locations' hours, the standard deviation.
 
 ## 5. Results
 
@@ -109,15 +109,15 @@ However, when we control for population by taking a proportion of the number of 
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/locationper10kbarchart.png" alt='A plot showing Non-Metro counties have the greatest proportion of total food shelf locations per 10k residents' width=90%>
 
+On average, a Non-Metro county has 2.07 locations per 10k residents, whereas a Metro county has only 0.87 locations per 10k residents, a difference of 1.20.
 
-
-
-The permutation test:
+This plot of the permutation test gives us a view of the world of the null hypothesis: after 20,000 simulations, the mostly likely difference for our value is 0.00. 
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/permutationforlocationsper10k.png" alt='alt text here' width=60%>
 
+Our observed value of 1.2 is therefore extremely unlikely - about 1% ($p \approx 0.01$) - if the null hypothesis is true. Therefore, we reject our null hpothesis. 
 
-
+However, the result does not support our original alternative hypothesis. Instead, it suggests support for a new hypothesis: that it is Non-Metro counties with the higher proportion of food shelf locations to 10k residents.
 
 ## 6. Uncertainty Estimation
 
@@ -126,6 +126,8 @@ The permutation test:
 * How many resamples you used
 * What the bootstrap or randomization distributions looked like
 * How you interpret the interval estimates -->
+
+For the separate hours analysis, we use a 30 location sample to estimate the number of open hours per month for an average Minnesota food shelf. We use bootstrapping - sampling from our sample with replacement 1,000 times - 
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/meanopenhours.png" alt='alt text here' width=80%>
 
