@@ -39,8 +39,6 @@ Null Hypothesis: A county's Metropolitan status has no effect on its number of f
 
 Alternative Hypothesis: Non-Metro counties have fewer food shelf locations per 10,000 residents than Metro counties.
 
-A separate analysis tests the null hypothesis that a location's Metro status has no effect on its open hours per month. Here, our alternative hypothesis is that Metro food shelf locations will have more open hours than Non-Metro locations, on average.
-
 ## 3. Data Description
 
 <!-- Describe your data source(s):
@@ -56,7 +54,7 @@ The data used for the analysis comes from two sources.
 
 #### MN County Population Data (`bea_mn_2024.csv`)
 
-The U.S. Department of Commerce's [Bureau of Economic Analysis (BEA)](https://www.bea.gov/) provides county-level population and personal income summary data. We use the most recent data available, [calendar year 2024](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*5wit58*_ga*MjEwNjIyNzY4LjE3NzY2MTQ4Nzc.*_ga_J4698JNNFT*czE3NzY2MTQ4NzckbzEkZzEkdDE3NzY2MTQ4ODkkajQ4JGwwJGgw#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCIyMCJdLFsiTWFqb3JfQXJlYSIsIjQiXSxbIlN0YXRlIixbIjI3MDAwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyItMSJdXSxbIlVuaXRfb2ZfbWVhc3VyZSIsIkxldmVscyJdLFsiWWVhciIsWyIyMDI0Il1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19). [(The data are also accessible via FRED \[Federal Reserve Economic Data\].)](https://fred.stlouisfed.org/release/tables?eid=267451&rid=175) The data were last updated 5 Feb 2026. The population estimates are from the United States Census Bureau's midyear population estimates, and so vary slightly from [the Census' finalized 2024 and 2025 estimates](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html#v2025) (for example, the BEA population estimate for Aitkin County is 16,335; the Census estimate is 16,283 for 2024 and 16,252 for 2025).
+The U.S. Department of Commerce's [Bureau of Economic Analysis (BEA)](https://www.bea.gov/) provides county-level population and personal income summary data. We use the most recent data available, [calendar year 2024](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*5wit58*_ga*MjEwNjIyNzY4LjE3NzY2MTQ4Nzc.*_ga_J4698JNNFT*czE3NzY2MTQ4NzckbzEkZzEkdDE3NzY2MTQ4ODkkajQ4JGwwJGgw#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCIyMCJdLFsiTWFqb3JfQXJlYSIsIjQiXSxbIlN0YXRlIixbIjI3MDAwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyItMSJdXSxbIlVuaXRfb2ZfbWVhc3VyZSIsIkxldmVscyJdLFsiWWVhciIsWyIyMDI0Il1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19). The data are also accessible via [FRED (Federal Reserve Economic Data)](https://fred.stlouisfed.org/release/tables?eid=267451&rid=175). The data were last updated 5 Feb 2026. The population estimates are from the United States Census Bureau's midyear population estimates, and so vary slightly from [the Census' finalized 2024 and 2025 estimates](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html#v2025) (for example, the BEA population estimate for Aitkin County is 16,335; the Census estimate is 16,283 for 2024 and 16,252 for 2025).
 
 There are 87 rows, one for each county in Minnesota.
 
@@ -91,9 +89,9 @@ We analyze the data in Python, using the `pandas` and `numpy` libraries to struc
 
 To test the null hypothesis, we observe the average value of the proportion of food shelf locations per 10k residents for Non-Metro counties minus the average value of the proportion of food shelf locations per 10k residents for Metro counties.
 
-We then perform a permutation test - a computational analysis technique in which we shuffle the Metro status column many times - to verify that the difference we observe is statistically significant. This test lets us reject our null hypothesis. 
+We then perform a permutation test - a computational technique in which we shuffle the Metro status column many times - to verify that the difference we observe is statistically significant. This test lets us reject our null hypothesis. 
 
-For the separate hours analysis, we calculate 95% confidence intervals using bootstrapping for (1) the average hours of the sample locations, and (2) a measure of the variation between the locations' hours, the standard deviation.
+For the hours analysis, we calculate 95% confidence intervals using bootstrapping for (1) the average hours of the sample locations, and (2) a measure of the variation between the locations' hours, the standard deviation.
 
 ## 5. Results
 
@@ -103,7 +101,7 @@ For the separate hours analysis, we calculate 95% confidence intervals using boo
 * Observed test statistic and p-value (if applicable)
 * Bootstrap confidence intervals for relevant metrics -->
 
-Minnesota's Metro counties are generally the state's most populous, and we expect them to have the greatest number of food shelf locations. Our census of food shelf locations confirms this is accurate - for example, just the counties of Hennepin and Ramsey (which hold the Twin Cities) have 137 food shelf locations, which is 25% of the total. 
+Minnesota's Metro counties are generally the state's most populous, and we expect them to have the greatest number of food shelf locations. Our census of food shelf locations confirms this is accurate - for example, just the counties of Hennepin and Ramsey (which hold the Twin Cities) have 137 food shelf locations, 25% of the total. 
 
 However, when we control for population by taking a proportion of the number of food shelf locations per 10,000 residents, a different picture emerges:
 
@@ -127,7 +125,7 @@ However, the result does not support our original alternative hypothesis. Instea
 * What the bootstrap or randomization distributions looked like
 * How you interpret the interval estimates -->
 
-For the separate hours analysis, we use a 30 location sample to estimate the number of open hours per month for an average Minnesota food shelf. Our sample's mean hours per month is about 40. Using bootstrapping - sampling from our sample with replacement 1,000 times - we determine that we are 95% confident the average number of hours is between 25 to 50 hours per month. 
+For the separate hours analysis, we use a 30 location sample to estimate the number of open hours per month for an average Minnesota food shelf. Our sample's mean hours per month is about 40. Using bootstrapping - sampling from our sample with replacement 1,000 times - we determine that we are 95% confident the average number of hours is between 25 to 50 hours per month.
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/meanopenhours.png" alt='alt text here' width=80%>
 
@@ -135,7 +133,7 @@ However, the shape of our sample's distribution suggests that food shelves might
 
 The standard deviation (50 hours) being greater than the mean (40 hours) tells us we should be uncertain about our mean results due to the high amount of variation in the data. The large confidence interval around the standard deviation tells us we should be uncertain about our uncertainty. In short, our data are so varied that additional analytical tools are necessary to accurately infer information about the population.
 
-Our sample size limits our uncertainty estimation. On the positive side, 30 samples is more than 5% of the total population. However, due to the extreme skew in the data distribution, this may be insufficient. For example, we know that in the population 25% of locations are in Hennepin and Ramsey, however in the sample only 16.66% of locations are.
+Our sample size is one factor limiting our uncertainty estimation. 30 samples is more than 5% of the total population; due to the extreme skew in the data distribution, this may be insufficient. For example, we know that in the population 25% of locations are in Hennepin and Ramsey, however in the sample only 16.66% of locations are.
 
 ## 7. Limitations
 
@@ -151,13 +149,13 @@ The most concrete example of this is size: in 2025, the Hennepin county food she
 
 The analysis takes the administrative unit of "the county" as its unit of analysis. This limits the analysis in three ways:
 
-1. By not zooming in, we're not able to be specific about food shelf access. Counties vary in size, and in general are a poor proxy for geographical closeness. 
+1. By not zooming in, we're not able to be specific about food shelf access. Counties vary in size, and in general are a poor proxy for a resident's actual geographical closeness to a food shelf.
 
 2. We're not able to analyze granular differences in usage and demand. For example, we can distinguish between wealthier and poorer counties, but not between rich and poor towns or neighborhoods. 
 
 3. County and state boundaries are arbitrary, and only incompletely determine how residents access food help. For example, a Ramsey county resident may visit a Hennepin county food shelf. This is particularly apparent for areas with services directly across the border, such as the Fargo-Moorhead metropolitan area and the Twin Ports (Duluth, MN and Superior, WI). We may accidentally under-weigh or over-weigh certain food shelf properties (such as open hours) as a result.
 
-One advantage of keeping the analysis within Minnesota state boundaries is that it may better reflect the data with which local and state governments actually make decisions.
+One advantage of keeping the analysis within Minnesota state boundaries is that our data may better reflect the data with which local governments and Minnesota-based nonprofits make decisions.
 
 ## 8. References
 
@@ -165,7 +163,7 @@ One advantage of keeping the analysis within Minnesota state boundaries is that 
 
 [^1]: Citing the USDA report "Household Food Security in the United States in 2016," the Food Research & Action Center (FRAC) reports that 15% of rural areas faced food insecurity in 2016, compared to 11.8% of metropolitan areas ([Rural Hunger in America: Get the Facts](https://frac.org/wp-content/uploads/rural-hunger-in-america-get-the-facts.pdf)).
 
-[^2]: Some data about food availability by type are available in [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey). For example, in 2025 shoppers reported that eggs were available only 37% of the time.
+[^2]: Data about food availability by type are available in [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey). For example, in 2025 shoppers reported that eggs were available only 37% of the time.
 
 [^3]: This analysis only considers food shelves, which is a limitation. For example, a lack of food shelves in a particular area might be balanced out by other services that better meet a particular community's needs. With that said, food shelves are a significant piece of food insecurity prevention: [Second Harvest Heartland's 2025 "The State of Food Security in Minnesota"](https://www.wilder.org/wp-content/uploads/2025/08/SecondHarvestHeartland_Infographic_3-25.pdf) collaborated with Wilder Research for a survey that found that "a higher share of households (11% overall) reported accessing free food (such as from food pantries, food shelves, food banks, or grocery giveaways) than any other type of food aid, including SNAP (7% overall)."
 
