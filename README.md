@@ -25,7 +25,7 @@ Several factors influence availability:
 - Transportation options
 - Availability of desired foods[^2]
 - Environment (welcoming staff, culturally relevant foods, and more)
-- Availability of other food help services
+- Availability of other food help services[^3]
 
 This analysis focuses on two availability factors:
 - Number of locations. We use a census of Minnesota food shelf locations to assess differences between Metropolitan and Non-Metropolitan locations. A location is Metropolitan if it is in a county that is in Minnesota's Metropolitan Statistical Area.
@@ -111,7 +111,7 @@ However, when we control for population by taking a proportion of the number of 
 
 On average, a Non-Metro county has 2.07 locations per 10k residents, whereas a Metro county has only 0.87 locations per 10k residents, a difference of 1.20.
 
-This plot of the permutation test gives us a view of the world of the null hypothesis: after 20,000 simulations, the mostly likely difference for our value is 0.00. 
+This plot of the permutation test gives us a view of the world of the null hypothesis: after 20,000 simulations, the mostly likely difference for our value is approximately zero.
 
 <img src="https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/images/permutationforlocationsper10k.png" alt='alt text here' width=60%>
 
@@ -133,29 +133,31 @@ For the separate hours analysis, we use a 30 location sample to estimate the num
 
 However, the shape of our sample's distribution suggests that food shelves might fall into two loose groupings: those open a small number of hours per month, say 10, and those open a larger number of hours per month, say 120 (approximately 30 hours per week). Because these groupings are so far from each other, there's a high amount of variation in the data. We can measure this variation in our sample using the standard deviation: about 50 hours. Using boostrapping, our 95% confidence interval for the standard deviation is between 36 hours and 58 hours.
 
-The standard deviation (50 hours) being greater than the mean (40 hours) tells us we should be uncertain about our mean results due to the high about of variation in the data. The large confidence interval around the standard deviation tells us we should be uncertain about our uncertainty. In short, our data are so varied that additional analytical tools are necessary to accurately infer qualities in the population.
+The standard deviation (50 hours) being greater than the mean (40 hours) tells us we should be uncertain about our mean results due to the high amount of variation in the data. The large confidence interval around the standard deviation tells us we should be uncertain about our uncertainty. In short, our data are so varied that additional analytical tools are necessary to accurately infer information about the population.
 
-Our uncertainty estimation is limited by our sample size. On the positive side, 30 samples is more than 5% of the total population. However, due to the extreme skew in the data distribution, this may be insufficient. For example, we know that in the population 25% of locations are in Hennepin and Ramsey, however in the sample only 16.66% of locations are.
+Our sample size limits our uncertainty estimation. On the positive side, 30 samples is more than 5% of the total population. However, due to the extreme skew in the data distribution, this may be insufficient. For example, we know that in the population 25% of locations are in Hennepin and Ramsey, however in the sample only 16.66% of locations are.
 
 ## 7. Limitations
 
 <!-- Briefly note any limitations in data, assumptions, or methods, including sources of bias or missing data. -->
 
-NOTES ON GRANULARITY: 
+### A. Limited analysis of availability
 
-It's important to note that this analysis does not analyze food shelf *access*. To analyze that, we'd want to measure walking or driving distance - or a proxy, such as miles from a nieghborhood to the nearest food shelf.
+The analysis only investigates two of the factors that influence food shelf availability, and it doesn't consider those factors together. By not considering additional factors, it's difficult to get a full picture of food help service provision in Minnesota.
 
-We'd also want to focus on community's with higher demand for food shelves. Unlike with grocery stores, we don't want every member of the population to have an equal ability to access a food shelf - we want to prioritize need/actual usage. E.X. poorer neighborhoods. 
+The most concrete example of this is size: in 2025, the Hennepin county food shelf Manna Market Substance received nearly 25,000 cases of food from the state of Minnesota. That same year, the Salvation Army Duluth location received 2 cases of food from the state. In our analysis, both of these locations are counted as 1.[^4]
 
-Even more pertinent to this analysis: there's no reason to think that *food shelf demand* is equally distributed by location. 
+### B. Limited geographical analysis
 
-Finally, food shelves are only one way food help is delivered. A lack of food shelves might be balanced out by other services that better meet a particular county's needs; without a broader accounting of which types of service provision are available, this analysis is incomplete.[^3]
+The analysis takes the administrative unit of "the county" as its unit of analysis. This limits the analysis in three ways:
 
-NOTE ON FOOD SHELF SIZES: Food shelves are very different. [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey) found that 19% of their food shelf survey respondants serve 60 or fewer average households per month, and 28% of their respondants serve 476 or more households per month. A short analysis in [tefap_context.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/tefap_context.ipynb) of 2025 food case distribution to Minnesota food shelves demonstrates the huge difference in size: the largest food shelf, Manna Market Substance, received 24,327 cases. The smallest operations received just 1 or 2 cases. 
+1. By not zooming in, we're not able to be specific about food shelf access. Counties vary in size, and in general are a poor proxy for geographical closeness. 
 
-Moreover, the increase in demand impacts larger food shelves *more* than smaller food shelves. In short, there are substantive differences between large operations and small operations, and this analysis treats each shelf as a singular entity with equal weight in the analysis. 
+2. We're not able to analyze granular differences in usage and demand. For example, we can distinguish between wealthier and poorer counties, but not between rich and poor towns or neighborhoods. 
 
-NOTE ON ARBIRARY BOUNDARIES: State boundaries are arbitrary when it comes to actual hunger prevention. This is most apparent for areas with services directly across the border, such as the Fargo-Moorhead metropolitan area and the Twin Ports (Duluth, MN and Superior, WI). On the other hand, Minnesota state boundaries are relevant because Minnesota is a self-contained administrative domain - MN local government can only make choices for MN. But the point still stands (e.x. an administrator siting a new food shelf would want to deprioritize a MN community already receiving survice from a nearby provider across state lines).
+3. County and state boundaries are arbitrary, and only incompletely determine how residents access food help. For example, a Ramsey county resident may visit a Hennepin county food shelf. This is particularly apparent for areas with services directly across the border, such as the Fargo-Moorhead metropolitan area and the Twin Ports (Duluth, MN and Superior, WI). We may accidentally under-weigh or over-weigh certain food shelf properties (such as open hours) as a result.
+
+One advantage of keeping the analysis within Minnesota state boundaries is that it may better reflect the data with which local and state governments actually make decisions.
 
 ## 8. References
 
@@ -165,6 +167,8 @@ NOTE ON ARBIRARY BOUNDARIES: State boundaries are arbitrary when it comes to act
 
 [^2]: Some data about food availability by type are available in [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey). For example, in 2025 shoppers reported that eggs were available only 37% of the time.
 
-[^3]: With that said, some reports indicate food shelves are a significant piece of food insecurity prevention: [Second Harvest Heartland's 2025 "The State of Food Security in Minnesota"](https://www.wilder.org/wp-content/uploads/2025/08/SecondHarvestHeartland_Infographic_3-25.pdf) collaborated with Wilder Research for a survey that found that "a higher share of households (11% overall) reported accessing free food (such as from food pantries, food shelves, food banks, or grocery giveaways) than any other type of food aid, including SNAP (7% overall).
+[^3]: This analysis only considers food shelves, which is a limitation. For example, a lack of food shelves in a particular area might be balanced out by other services that better meet a particular community's needs. With that said, food shelves are a significant piece of food insecurity prevention: [Second Harvest Heartland's 2025 "The State of Food Security in Minnesota"](https://www.wilder.org/wp-content/uploads/2025/08/SecondHarvestHeartland_Infographic_3-25.pdf) collaborated with Wilder Research for a survey that found that "a higher share of households (11% overall) reported accessing free food (such as from food pantries, food shelves, food banks, or grocery giveaways) than any other type of food aid, including SNAP (7% overall)."
+
+[^4]: The data for TEFAP case distribution comes from the Minnesota Department of Children, Youth, and Families (DCYF). A short analysis is available in [tefap_context.ipynb](https://github.com/a-location-1/mn-food-shelf-analysis/blob/main/tefap_context.ipynb). [SuperShelf's 2025 Minnesota Food Shelf Survey](https://www.supershelfmn.org/minnesota-statewide-survey) also highlights the huge difference in food shelf size: 19% of the food shelf survey respondants serve 60 or fewer average households per month. 28% of the respondants serve 476 or more households per month.
 
 ---
